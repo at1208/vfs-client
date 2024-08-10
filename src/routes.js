@@ -9,9 +9,11 @@ import {
   DASHBOARD_PATH,
   BOOK_BULK_VISA_PATH,
   BOOK_VISA_PATH,
+  APPLICATION_PATH,
 } from "./constants/path.js";
 import BookVisa from "./pages/BookVisa.js";
 import BookBulkVisa from "./pages/BookBulkVisa.js";
+import Applications from "./pages/Applications";
 
 export default function PageRouter() {
   return (
@@ -32,6 +34,10 @@ export default function PageRouter() {
       <Route
         path={BOOK_BULK_VISA_PATH}
         element={<Router component={BookBulkVisa} executor={[authguard]} />}
+      />
+      <Route
+        path={APPLICATION_PATH}
+        element={<Router component={Applications} executor={[authguard]} />}
       />
     </Routes>
   );
