@@ -4,7 +4,14 @@ import Home from "./pages/Home.js";
 import Dashboard from "./pages/Dashboard.js";
 import authguard from "./authguard/authguard.js";
 import Router from "./components/Router.js";
-import { HOME_PATH, DASHBOARD_PATH } from "./constants/path.js";
+import {
+  HOME_PATH,
+  DASHBOARD_PATH,
+  BOOK_BULK_VISA_PATH,
+  BOOK_VISA_PATH,
+} from "./constants/path.js";
+import BookVisa from "./pages/BookVisa.js";
+import BookBulkVisa from "./pages/BookBulkVisa.js";
 
 export default function PageRouter() {
   return (
@@ -16,6 +23,15 @@ export default function PageRouter() {
       <Route
         path={DASHBOARD_PATH}
         element={<Router component={Dashboard} executor={[authguard]} />}
+      />
+
+      <Route
+        path={BOOK_VISA_PATH}
+        element={<Router component={BookVisa} executor={[authguard]} />}
+      />
+      <Route
+        path={BOOK_BULK_VISA_PATH}
+        element={<Router component={BookBulkVisa} executor={[authguard]} />}
       />
     </Routes>
   );

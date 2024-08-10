@@ -13,7 +13,7 @@ export const getSession = async () => {
         "Error getting session:",
         error.response?.data || error.message
       );
-      throw new Error(
+      return new Error(
         `Error getting session: ${
           error.response?.data?.message || error.message
         }`
