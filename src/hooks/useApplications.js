@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getApplications } from "../services/applicationService";
+import { getApplications } from "../services/appService";
 
-export const useApplications = () => {
+export const useApplications = (queryParams = {}) => {
   return useQuery({
-    queryKey: ["applications"],
-    queryFn: getApplications,
+    queryKey: ["applications", queryParams],
+    queryFn: () => getApplications(queryParams),
   });
 };
