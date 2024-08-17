@@ -16,7 +16,7 @@ const SideDrawer = ({
       open={open}
       onClose={onClose}
       PaperProps={{
-        sx: { width },
+        sx: { width, background: "#01021a" },
       }}
     >
       <Box
@@ -26,14 +26,13 @@ const SideDrawer = ({
           height: "100%",
         }}
       >
-        {/* Header with Title and Close Button */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             padding: 2,
             borderBottom: "1px solid #ddd",
-            backgroundColor: "background.paper",
+            backgroundColor: "#01021a",
             boxShadow: 1,
           }}
         >
@@ -44,11 +43,14 @@ const SideDrawer = ({
               alignItems: "center",
             }}
           >
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: "bold", color: "#ffff" }}
+            >
               {title}
             </Typography>
             <IconButton onClick={onClose}>
-              <CloseIcon />
+              <CloseIcon sx={{ color: "#ffff" }} />
             </IconButton>
           </Box>
         </Box>

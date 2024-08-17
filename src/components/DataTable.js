@@ -39,11 +39,14 @@ const DataTable = ({ columns, data, isLoading, error }) => {
       <TableContainer
         component={Paper}
         sx={{
-          maxWidth: "calc(100vw - 40px)", // Adjust max-width based on padding
+          maxWidth: "calc(100vw - 72px)", // Adjust max-width based on padding
           overflowX: "auto",
           boxShadow: 3,
           borderRadius: 2,
           padding: 2,
+          background: "transparent",
+          border: "1px solid #2c2c2c",
+          color: "white",
         }}
       >
         {data && data.length === 0 ? (
@@ -58,8 +61,9 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                   <TableCell
                     key={column.id}
                     sx={{
-                      backgroundColor: "primary.main",
-                      color: "primary.contrastText",
+                      borderBottom: "none",
+                      backgroundColor: "transparent",
+                      color: "grey",
                       fontWeight: "bold",
                       padding: "10px",
                       whiteSpace: "nowrap",
@@ -79,10 +83,12 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                   <TableRow
                     key={row._id}
                     sx={{
-                      "&:nth-of-type(odd)": {
-                        backgroundColor: "action.hover",
+                      "&:hover": {
+                        backgroundColor: "transparent",
+                        opacity: ".7",
+                        color: "primary.contrastText",
                       },
-                      cursor: "pointer", // Add cursor pointer to indicate row is clickable
+                      cursor: "pointer",
                     }}
                     onClick={() => handleRowClick(row._id)} // Handle row click
                   >
@@ -90,8 +96,9 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                       <TableCell
                         key={column.id}
                         sx={{
-                          padding: "10px",
-                          borderBottom: "1px solid #ddd",
+                          padding: "16px 12px",
+                          color: "#dadada",
+                          borderBottom: "none",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",

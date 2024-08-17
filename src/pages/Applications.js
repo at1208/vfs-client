@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import AppListing from "../components/AppListing";
 import SideDrawer from "../components/SideDrawer";
-import { Box, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useApplications } from "../hooks/useApplications";
 import { toTitleCase } from "../utils/helpers";
 import SearchBar from "../components/SearchBar";
+import Upload from "../components/Upload";
 
 export default function Applications() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -15,6 +16,7 @@ export default function Applications() {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const detail = params.get("detail");
+  const bookNow = params.get("bookNow");
 
   // Fetch application data
   const { data, error, isLoading } = useApplications({ _id: id });
@@ -53,8 +55,12 @@ export default function Applications() {
 
   const formattedData = formatData(applicationData);
 
+  console.log({ bookNow });
+
   return (
     <Box>
+      <Upload isOpen={bookNow === "bulkUpload"} />
+
       <SearchBar placeholder="Search Application" />
       <AppListing />
       <SideDrawer
@@ -76,7 +82,7 @@ export default function Applications() {
                 key={key}
                 sx={{
                   padding: 2,
-                  borderBottom: "1px solid #ddd",
+                  borderBottom: "1px solid #2c2c2c",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -85,7 +91,7 @@ export default function Applications() {
                   variant="body2"
                   sx={{
                     fontWeight: "bold",
-                    color: "text.primary",
+                    color: "grey",
                     flexShrink: 0,
                     width: "40%",
                   }}
@@ -94,13 +100,7 @@ export default function Applications() {
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ margin: "0 8px", color: "text.primary", flexShrink: 0 }}
-                >
-                  :
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ color: "text.secondary", flexGrow: 1 }}
+                  sx={{ color: "#dfdada", flexGrow: 1 }}
                 >
                   {value}
                 </Typography>

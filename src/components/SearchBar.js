@@ -49,7 +49,7 @@ const SearchBar = ({ placeholder }) => {
           startAdornment: (
             <InputAdornment position="start">
               <IconButton>
-                <SearchIcon />
+                <SearchIcon sx={{ color: "white" }} />
               </IconButton>
             </InputAdornment>
           ),
@@ -59,6 +59,22 @@ const SearchBar = ({ placeholder }) => {
           borderRadius: "25px",
           "& .MuiOutlinedInput-root": {
             borderRadius: "25px",
+            "& fieldset": {
+              borderColor: "#595959", // Border color
+              //   borderColor: "primary.main", // Border color when not focused
+            },
+            "&:hover fieldset": {
+              borderColor: "primary.dark", // Border color on hover
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "primary.main", // Border color when focused
+            },
+          },
+          "& .MuiInputBase-input": {
+            color: "#ffff", // Input text color
+          },
+          "& .MuiInputBase-input::placeholder": {
+            color: "white", // Placeholder color
           },
         }}
       />

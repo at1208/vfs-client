@@ -19,23 +19,40 @@ export default function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        background: "01021a",
+        border: "1px solid #2c2c2c",
+        borderRadius: "4px",
       }}
     >
       <Card sx={{ boxShadow: 3 }}>
-        {" "}
-        {/* Added box shadow here */}
         <CardContent
           sx={{
             textAlign: "center",
-            height: "150px",
+            // height: "0px",
             width: 300,
             display: "grid",
             alignItems: "end",
+            background: "#01021a",
           }}
         >
-          <Typography variant="h5" component="div">
-            Member Login!
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexGrow: 1,
+              padding: "24px",
+              gap: "12px",
+            }}
+          >
+            <img src="logo.png" alt="Get your visa" height={35} />
+            <Typography
+              variant="h5"
+              sx={{ fontSize: "24px", color: "#cad9ff", fontWeight: "800" }}
+            >
+              Get Your VISA
+            </Typography>
+          </Box>
           <Box
             sx={{
               padding: 2,
@@ -47,7 +64,13 @@ export default function Login() {
             <Button
               variant="contained"
               onClick={handleGoogleLogin}
-              sx={{ display: "flex", gap: 1, padding: "8px 16px" }}
+              sx={{
+                display: "flex",
+                gap: 1,
+                padding: "8px 16px",
+                textTransform: "capitalize",
+                background: "#061178",
+              }}
             >
               <GoogleIcon fontSize="medium" />
               Login with Google

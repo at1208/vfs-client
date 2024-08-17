@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -21,6 +21,7 @@ export default function Layout({ children }) {
   const location = useLocation();
   const { session } = useSelector((state) => state.session) || {};
   const { avatar, name } = session?.user || {};
+  const navigate = useNavigate();
 
   // Separate state for each dropdown menu
   const [anchorElBookNow, setAnchorElBookNow] = React.useState(null);
@@ -66,22 +67,40 @@ export default function Layout({ children }) {
   const shouldRenderLayout = !excludedPaths.includes(location.pathname);
 
   return shouldRenderLayout ? (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", background: "#01021a", minHeight: "100vh" }}>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          backgroundColor: (theme) => theme.palette.background.default,
+          backgroundColor: "#01021a",
         }}
       >
-        <AppBar position="static" sx={{ pl: 1, pr: 1, background: "#ffff" }}>
+        <AppBar
+          position="static"
+          sx={{
+            pl: 1,
+            pr: 1,
+            background: "#01021a",
+            borderBottom: "1px solid #172731",
+          }}
+        >
           <Toolbar>
             <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1 }}
-              ></Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexGrow: 1,
+                  gap: "12px",
+                }}
+              >
+                <img src="logo.png" alt="Get your visa" height={35} />
+                <Typography
+                  sx={{ fontSize: "24px", color: "#cad9ff", fontWeight: "900" }}
+                >
+                  Get Your VISA
+                </Typography>
+              </Box>
 
               {/* Book Now Button and Dropdown */}
               <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -89,6 +108,7 @@ export default function Layout({ children }) {
                   variant="contained"
                   onClick={handleClickBookNow}
                   size="medium"
+                  sx={{ background: "#003eb3" }}
                 >
                   Book Now
                 </Button>
@@ -121,14 +141,16 @@ export default function Layout({ children }) {
                   anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
                   <MenuItem
-                    onClick={() => (window.location.href = BOOK_VISA_PATH)}
+                    onClick={() => {
+                      const params = new URLSearchParams(location.search);
+                      params.set("bookNow", "bulkUpload");
+                      navigate(`${location.pathname}?${params.toString()}`, {
+                        replace: true,
+                      });
+                      handleCloseBookNow(); // Close the menu after selecting the item
+                    }}
                   >
-                    Single Booking
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => (window.location.href = BOOK_BULK_VISA_PATH)}
-                  >
-                    Bulk Booking
+                    Bulk Upload
                   </MenuItem>
                 </Menu>
               </Box>
@@ -147,7 +169,7 @@ export default function Layout({ children }) {
                       variant="h6"
                       sx={{
                         mr: 2,
-                        color: "black",
+                        color: "white",
                         fontSize: "18px",
                         alignItems: "center",
                       }}
