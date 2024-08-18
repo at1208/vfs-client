@@ -31,7 +31,8 @@ const SearchBar = ({ placeholder }) => {
     return () => {
       debouncedUpdateURL.cancel();
     };
-  }, [searchValue, debouncedUpdateURL]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue]);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
