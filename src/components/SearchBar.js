@@ -28,7 +28,13 @@ const SearchBar = ({ placeholder }) => {
     return () => {
       debouncedUpdateURL.cancel();
     };
-  }, [searchValue, location.search, location.pathname, navigate]);
+  }, [
+    searchValue,
+    location.search,
+    location.pathname,
+    navigate,
+    debouncedUpdateURL,
+  ]);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
