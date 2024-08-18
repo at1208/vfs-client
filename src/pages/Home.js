@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Box
       sx={{
-        background: "#01021a",
+        // background: "#01021a",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",

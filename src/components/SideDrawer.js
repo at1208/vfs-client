@@ -16,7 +16,10 @@ const SideDrawer = ({
       open={open}
       onClose={onClose}
       PaperProps={{
-        sx: { width, background: "#01021a" },
+        sx: {
+          width,
+          // background: "#01021a"
+        },
       }}
     >
       <Box
@@ -31,8 +34,8 @@ const SideDrawer = ({
             display: "flex",
             flexDirection: "column",
             padding: 2,
-            borderBottom: "1px solid #ddd",
-            backgroundColor: "#01021a",
+            // borderBottom: "1px solid #ddd",
+            // backgroundColor: "#01021a",
             boxShadow: 1,
           }}
         >
@@ -45,12 +48,17 @@ const SideDrawer = ({
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: "bold", color: "#ffff" }}
+              sx={{
+                fontWeight: "bold",
+                //   color: "#ffff"
+              }}
             >
               {title}
             </Typography>
             <IconButton onClick={onClose}>
-              <CloseIcon sx={{ color: "#ffff" }} />
+              <CloseIcon
+              //   sx={{ color: "#ffff" }}
+              />
             </IconButton>
           </Box>
         </Box>

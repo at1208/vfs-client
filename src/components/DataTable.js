@@ -13,7 +13,13 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const DataTable = ({ columns, data, isLoading, error }) => {
+const DataTable = ({
+  columns,
+  data,
+  isLoading,
+  error,
+  minWidth = "calc(100vw - 500px)",
+}) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const navigate = useNavigate(); // Hook for navigation
@@ -39,14 +45,14 @@ const DataTable = ({ columns, data, isLoading, error }) => {
       <TableContainer
         component={Paper}
         sx={{
-          maxWidth: "calc(100vw - 72px)", // Adjust max-width based on padding
+          minWidth: minWidth, // Adjust max-width based on padding
           overflowX: "auto",
           boxShadow: 3,
           borderRadius: 2,
           padding: 2,
-          background: "transparent",
-          border: "1px solid #2c2c2c",
-          color: "white",
+          //     background: "transparent",
+          //     border: "1px solid #2c2c2c",
+          //     color: "white",
         }}
       >
         {data && data.length === 0 ? (
@@ -61,9 +67,9 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                   <TableCell
                     key={column.id}
                     sx={{
-                      borderBottom: "none",
-                      backgroundColor: "transparent",
-                      color: "grey",
+                      //     borderBottom: "none",
+                      //     backgroundColor: "transparent",
+                      //     color: "grey",
                       fontWeight: "bold",
                       padding: "10px",
                       whiteSpace: "nowrap",
@@ -84,7 +90,7 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                     key={row._id}
                     sx={{
                       "&:hover": {
-                        backgroundColor: "transparent",
+                        // backgroundColor: "transparent",
                         opacity: ".7",
                         color: "primary.contrastText",
                       },
@@ -97,7 +103,7 @@ const DataTable = ({ columns, data, isLoading, error }) => {
                         key={column.id}
                         sx={{
                           padding: "16px 12px",
-                          color: "#dadada",
+                          //   color: "#dadada",
                           borderBottom: "none",
                           whiteSpace: "nowrap",
                           overflow: "hidden",
@@ -115,7 +121,7 @@ const DataTable = ({ columns, data, isLoading, error }) => {
       </TableContainer>
       <TablePagination
         sx={{
-          color: "#ffff",
+          //     color: "#ffff",
           opacity: ".8",
         }}
         rowsPerPageOptions={[5, 10, 25]}

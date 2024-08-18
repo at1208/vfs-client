@@ -19,8 +19,8 @@ export default function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "01021a",
-        border: "1px solid #2c2c2c",
+        // background: "01021a",
+        // border: "1px solid #2c2c2c",
         borderRadius: "4px",
       }}
     >
@@ -32,7 +32,7 @@ export default function Login() {
             width: 300,
             display: "grid",
             alignItems: "end",
-            background: "#01021a",
+            // background: "#01021a",
           }}
         >
           <Box
@@ -48,7 +48,11 @@ export default function Login() {
             <img src="logo.png" alt="Get your visa" height={35} />
             <Typography
               variant="h5"
-              sx={{ fontSize: "24px", color: "#cad9ff", fontWeight: "800" }}
+              sx={{
+                fontSize: "24px",
+                // color: "#cad9ff",
+                fontWeight: "800",
+              }}
             >
               Get Your VISA
             </Typography>
@@ -69,7 +73,7 @@ export default function Login() {
                 gap: 1,
                 padding: "8px 16px",
                 textTransform: "capitalize",
-                background: "#061178",
+                // background: "#061178",
               }}
             >
               <GoogleIcon fontSize="medium" />

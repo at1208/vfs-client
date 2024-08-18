@@ -172,8 +172,9 @@ const Upload = ({ isOpen }) => {
           overflowY: "auto",
           border: "1px solid grey",
           width: 500,
-          bgcolor: "#01021a",
-          color: "#ffff",
+
+          bgcolor: "#ffff",
+          //     color: "#ffff",
           borderRadius: 2,
           boxShadow: 24,
           p: 4,
@@ -197,19 +198,18 @@ const Upload = ({ isOpen }) => {
           <CloseIcon />
         </IconButton>
 
-        <Typography variant="h6" id="upload-modal-title">
-          Upload an Excel File
-        </Typography>
-
         {!uploading &&
           uploadedApplications.length === 0 &&
           errors.length === 0 && (
             <>
+              <Typography variant="h6" id="upload-modal-title">
+                Upload an Excel File
+              </Typography>
               <Button
                 size="small"
                 sx={{
                   textTransform: "capitalize",
-                  background: "#061178",
+                  // background: "#061178",
                   marginTop: "4px",
                 }}
                 variant="contained"
@@ -252,7 +252,7 @@ const Upload = ({ isOpen }) => {
                 <Tab
                   label={`Uploaded Applications (${uploadedApplications?.length})`}
                   sx={{
-                    color: "#ffff",
+                    //   color: "#ffff",
                     fontSize: "15px",
                     opacity: ".8",
                     textTransform: "capitalize",
@@ -261,7 +261,7 @@ const Upload = ({ isOpen }) => {
                 <Tab
                   label={`Errors (${errors?.length})`}
                   sx={{
-                    color: "#ffff",
+                    //   color: "#ffff",
                     fontSize: "15px",
                     opacity: ".8",
                     textTransform: "capitalize",
@@ -273,17 +273,19 @@ const Upload = ({ isOpen }) => {
                 {tabIndex === 0 && (
                   <TableContainer
                     component={Paper}
-                    sx={{
-                      background: "#01021a",
-                      color: "#ffff",
-                    }}
+                    sx={
+                      {
+                        //     background: "#01021a",
+                        //     color: "#ffff",
+                      }
+                    }
                   >
                     <Table aria-label="uploaded applications table">
                       <TableHead>
                         <TableRow>
                           <TableCell
                             sx={{
-                              color: "grey",
+                              // color: "grey",
                               // opacity: ".7",
                               borderBottom: "none",
                             }}
@@ -292,7 +294,7 @@ const Upload = ({ isOpen }) => {
                           </TableCell>
                           <TableCell
                             sx={{
-                              color: "grey",
+                              // color: "grey",
                               // opacity: ".7",
                               borderBottom: "none",
                             }}
@@ -301,7 +303,7 @@ const Upload = ({ isOpen }) => {
                           </TableCell>
                           <TableCell
                             sx={{
-                              color: "grey",
+                              // color: "grey",
                               // opacity: ".7",
                               borderBottom: "none",
                             }}
@@ -315,7 +317,7 @@ const Upload = ({ isOpen }) => {
                           <TableRow key={index}>
                             <TableCell
                               sx={{
-                                color: "#ffff",
+                                //   color: "#ffff",
                                 opacity: ".7",
                                 borderBottom: "none",
                               }}
@@ -324,7 +326,7 @@ const Upload = ({ isOpen }) => {
                             </TableCell>
                             <TableCell
                               sx={{
-                                color: "#ffff",
+                                //   color: "#ffff",
                                 opacity: ".7",
                                 borderBottom: "none",
                               }}
@@ -333,7 +335,7 @@ const Upload = ({ isOpen }) => {
                             </TableCell>
                             <TableCell
                               sx={{
-                                color: "#ffff",
+                                //   color: "#ffff",
                                 opacity: ".7",
                                 borderBottom: "none",
                               }}
@@ -351,17 +353,19 @@ const Upload = ({ isOpen }) => {
                   (errors?.length ? (
                     <TableContainer
                       component={Paper}
-                      sx={{
-                        background: "#01021a",
-                        color: "#ffff",
-                      }}
+                      sx={
+                        {
+                          // background: "#01021a",
+                          // color: "#ffff",
+                        }
+                      }
                     >
                       <Table aria-label="errors table">
                         <TableHead>
                           <TableRow>
                             <TableCell
                               sx={{
-                                color: "grey",
+                                //   color: "grey",
                                 // opacity: ".7",
                                 borderBottom: "none",
                               }}
@@ -370,7 +374,7 @@ const Upload = ({ isOpen }) => {
                             </TableCell>
                             <TableCell
                               sx={{
-                                color: "grey",
+                                //   color: "grey",
                                 // opacity: ".7",
                                 borderBottom: "none",
                               }}
@@ -384,7 +388,7 @@ const Upload = ({ isOpen }) => {
                             <TableRow key={index}>
                               <TableCell
                                 sx={{
-                                  color: "#ffff",
+                                  //     color: "#ffff",
                                   opacity: ".7",
                                   borderBottom: "none",
                                 }}
@@ -408,7 +412,7 @@ const Upload = ({ isOpen }) => {
                   ) : (
                     <Typography
                       sx={{
-                        color: "#ffff",
+                        // color: "#ffff",
                         opacity: ".7",
                       }}
                     >
