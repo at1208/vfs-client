@@ -7,7 +7,7 @@ export const createApplication = async (applicationData) => {
     const response = await axiosInstance.post(applicationURL, applicationData);
     return response.data;
   } catch (error) {
-    return error.response?.data?.message || error.message;
+    return error.response?.errors || error.message;
   }
 };
 

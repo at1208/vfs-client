@@ -114,6 +114,10 @@ const DataTable = ({ columns, data, isLoading, error }) => {
         )}
       </TableContainer>
       <TablePagination
+        sx={{
+          color: "#ffff",
+          opacity: ".8",
+        }}
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
         count={data?.length || 0}
