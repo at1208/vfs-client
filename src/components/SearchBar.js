@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TextField, Box, InputAdornment, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -10,18 +10,15 @@ const SearchBar = ({ placeholder }) => {
   const location = useLocation();
 
   // Debounce the function to update the URL
-  const debouncedUpdateURL = useCallback(
-    debounce((value) => {
-      const params = new URLSearchParams(location.search);
-      if (value) {
-        params.set("search", value);
-      } else {
-        params.delete("search");
-      }
-      navigate(`${location.pathname}?${params.toString()}`, { replace: true });
-    }, 300), // Adjust debounce delay as needed
-    [location.search, location.pathname, navigate]
-  );
+  const debouncedUpdateURL = debounce((value) => {
+    const params = new URLSearchParams(location.search);
+    if (value) {
+      params.set("search", value);
+    } else {
+      params.delete("search");
+    }
+    navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+  }, 300); // Adjust debounce delay as needed
 
   useEffect(() => {
     // Call debounced function to update the URL
@@ -31,8 +28,7 @@ const SearchBar = ({ placeholder }) => {
     return () => {
       debouncedUpdateURL.cancel();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchValue]);
+  }, [searchValue, location.search, location.pathname, navigate]);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
@@ -50,9 +46,7 @@ const SearchBar = ({ placeholder }) => {
           startAdornment: (
             <InputAdornment position="start">
               <IconButton>
-                <SearchIcon
-                //     sx={{ color: "white" }}
-                />
+                <SearchIcon />
               </IconButton>
             </InputAdornment>
           ),
@@ -62,22 +56,12 @@ const SearchBar = ({ placeholder }) => {
           borderRadius: "25px",
           "& .MuiOutlinedInput-root": {
             borderRadius: "25px",
-            "& fieldset": {
-              //   borderColor: "#595959", // Border color
-              //   borderColor: "primary.main", // Border color when not focused
-            },
             "&:hover fieldset": {
-              borderColor: "primary.dark", // Border color on hover
+              borderColor: "primary.dark",
             },
             "&.Mui-focused fieldset": {
-              borderColor: "primary.main", // Border color when focused
+              borderColor: "primary.main",
             },
-          },
-          "& .MuiInputBase-input": {
-            // color: "#ffff", // Input text color
-          },
-          "& .MuiInputBase-input::placeholder": {
-            // color: "white", // Placeholder color
           },
         }}
       />
