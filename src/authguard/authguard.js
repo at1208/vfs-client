@@ -1,7 +1,7 @@
 import { fetchSessionSuccess } from "../redux/actions/sessionAction";
 import store from "../redux/store/store";
 import { getSession } from "../services/authService";
-import { DASHBOARD_PATH, HOME_PATH, PUBLIC_PATHS } from "../constants/path";
+import { HOME_PATH } from "../constants/path";
 
 export default function authguard(path) {
   return new Promise(async (resolve, reject) => {
